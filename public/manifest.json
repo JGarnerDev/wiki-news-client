@@ -1,0 +1,9 @@
+{
+  "short_name": "Wiki News",
+  "name": "Wiki News - A Mapping App for News on WikiPedia",
+
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
