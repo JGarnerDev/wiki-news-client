@@ -1,15 +1,26 @@
 import React, { useState } from "react";
 
-import Nav from "../../components/Nav/Nav";
+import Nav from "../../components/MapNav/MapNav";
 
-const Map = ({ datesAvailable }) => {
-  const [news, setNews] = useState();
+import { getNewsByDate } from "../../api";
 
-  const handleUpdate = () => {};
+const Map = ({ datesAvailable, initialNews }) => {
+  const [news, setNews] = useState(initialNews);
+  const [currentDate, setCurrentDate] = useState(initialNews);
 
+  const handleUpdate = async (date) => {
+    if (date === currentDate) {
+      return;
+    }
+    const news = await getNewsByDate(date);
+    setCurrentDate(date);
+    setNews(news);
+  };
+
+  console.log(news);
   return (
     <>
-      <Nav datesAvailable={datesAvailable} />
+      <Nav datesAvailable={datesAvailable} handleUpdate={handleUpdate} />
     </>
   );
 };

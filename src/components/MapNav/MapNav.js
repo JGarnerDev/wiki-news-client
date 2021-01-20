@@ -1,34 +1,36 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-import NavListItem from "./NavListItem";
+import MapNavListItem from "./MapNavListItem";
 
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 import Button from "@material-ui/core/Button";
 import List from "@material-ui/core/List";
-import Divider from "@material-ui/core/Divider";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
-import MenuRounded from "@material-ui/core/Menu";
-import NavList from "./NavList";
 
-const Nav = ({ datesAvailable, handleUpdate }) => {
+const MapNav = ({ datesAvailable, handleUpdate }) => {
   const [openNav, setOpenNav] = useState(false);
 
-  const toggleNav = () => {
+  const toggleNavAndUpdate = (shouldUpdateMap = false, newsDate) => {
     setOpenNav(!openNav);
+    if (shouldUpdateMap) {
+      handleUpdate(newsDate);
+    }
   };
 
   const renderNewsDates = () =>
     datesAvailable.map((date) => (
-      <NavListItem date={date} clickHandler={toggleNav} />
+      <MapNavListItem
+        date={date}
+        clickHandler={toggleNavAndUpdate}
+        key={date}
+      />
     ));
 
   return (
-    <nav id="Nav">
+    <nav id="MapNav">
       <Button
         onClick={() => {
-          toggleNav();
+          toggleNavAndUpdate();
         }}
       >
         Hello
@@ -38,10 +40,10 @@ const Nav = ({ datesAvailable, handleUpdate }) => {
         anchor={"right"}
         open={openNav}
         onClose={() => {
-          toggleNav();
+          toggleNavAndUpdate();
         }}
         onOpen={() => {
-          toggleNav();
+          toggleNavAndUpdate();
         }}
       >
         <>
@@ -52,4 +54,4 @@ const Nav = ({ datesAvailable, handleUpdate }) => {
   );
 };
 
-export default Nav;
+export default MapNav;
