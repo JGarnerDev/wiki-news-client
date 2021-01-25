@@ -6,7 +6,9 @@ import About from "../views/About/About";
 import Map from "../views/Map/Map";
 
 import { getDatesAvailableList, getNewsLatest } from "../api";
-import { paths } from "../config";
+import { paths } from "../config/paths";
+
+import "../styles/main.scss";
 
 const App = () => {
   const [datesAvailable, setDatesAvailable] = useState([]);
