@@ -1,19 +1,25 @@
-.news-icon {
-  width: 5vw;
-  padding: 2px;
-  background: white;
-  border-radius: 50%;
-}
-
-.mapboxgl-map {
-  position: relative;
-}
-.mapboxgl-popup {
-  width: 70vw;
-  min-width: 300px !important;
-}
-
 .popup-link {
   position: relative;
   top: 0;
+}
+
+#Map {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  .news-icon {
+    width: 30px;
+
+    padding: 2px;
+    background: white;
+    border-radius: 50%;
+  }
+
+  .mapboxgl-popup {
+    width: 70vw;
+    min-width: 300px !important;
+    a {
+      z-index: 100;
+    }
+  }
 }

@@ -14,7 +14,7 @@ const Map = ({ datesAvailable, initialNews }) => {
   const [viewport, setViewport] = useState({
     latitude: 0,
     longitude: 0,
-    zoom: 1,
+    zoom: 2,
     width: "100%",
     height: "100%",
   });
@@ -48,6 +48,7 @@ const Map = ({ datesAvailable, initialNews }) => {
     const newsData = await getNewsByDate(date);
     setCurrentDate(date);
     setNewsData(newsData);
+    setSelectedNews(null);
   };
 
   const renderNewsList = () => {
@@ -80,13 +81,16 @@ const Map = ({ datesAvailable, initialNews }) => {
   };
 
   return (
-    <>
+    <div id="Map">
       <MapNav datesAvailable={datesAvailable} handleUpdate={handleUpdate} />
       <ReactMapGL
         {...viewport}
         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
         onViewportChange={(viewport) => setViewport(viewport)}
         mapStyle={"mapbox://styles/eljeffe345/ckkcxbasl27f517rz3u9n41wt"}
+        height="100%"
+        width="100%"
+        zoom={2}
       >
         {renderNewsList()}
         {selectedNews ? (
@@ -101,14 +105,17 @@ const Map = ({ datesAvailable, initialNews }) => {
             >
               <h2>{selectedNews.title}</h2>
               <br />
-              <p>{selectedNews.content[0]}</p>
+              <img src={selectedNews.feature_img_src} align="right" />
+              <p>{selectedNews.content[0] || ""}</p>
               <br />
-              <a href={selectedNews.href}>Link to article</a>
+              <a href={selectedNews.href} target="_blank">
+                Link to article
+              </a>
             </Popup>
           </>
         ) : null}
       </ReactMapGL>
-    </>
+    </div>
   );
 };
 
