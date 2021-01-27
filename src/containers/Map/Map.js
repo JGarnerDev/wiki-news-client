@@ -105,9 +105,18 @@ const Map = ({ datesAvailable, initialNews }) => {
             >
               <h2>{selectedNews.title}</h2>
               <br />
-              <img src={selectedNews.feature_img_src} align="right" />
-              <p>{selectedNews.content[0] || ""}</p>
-              <br />
+              <img src={selectedNews.feature_img_src} />
+              <div className="popup-text">
+                {selectedNews.content &&
+                  selectedNews.content.map((item) => (
+                    <>
+                      <p>{item}</p>
+                      <br />
+                    </>
+                  ))}
+                <br />
+              </div>
+
               <a href={selectedNews.href} target="_blank">
                 Link to article
               </a>

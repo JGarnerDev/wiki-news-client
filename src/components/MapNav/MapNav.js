@@ -6,6 +6,8 @@ import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 import Button from "@material-ui/core/Button";
 import List from "@material-ui/core/List";
 
+import "./MapNav.scss";
+
 const MapNav = ({ datesAvailable, handleUpdate }) => {
   const [openNav, setOpenNav] = useState(false);
 

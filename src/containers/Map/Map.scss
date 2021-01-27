@@ -1,0 +1,63 @@
+.popup-link {
+  position: relative;
+  top: 0;
+}
+
+#Map {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  .news-icon {
+    width: 30px;
+
+    padding: 2px;
+    background: white;
+    border-radius: 50%;
+  }
+
+  .mapboxgl-popup {
+    width: 70vw;
+    min-width: 300px !important;
+
+    a {
+      z-index: 100;
+    }
+
+    &-content {
+      display: flex !important;
+      flex-direction: column;
+      align-items: center !important;
+      height: 400px;
+      h2 {
+        max-width: 85%;
+        text-align: center;
+        text-transform: capitalize;
+      }
+      img {
+        width: 50%;
+        max-width: 200px;
+        height: auto;
+      }
+      .popup-text {
+        overflow-y: scroll;
+        margin: 20px 0;
+      }
+
+      @media only screen and (min-width: 400px) {
+        display: unset;
+        align-items: unset;
+        img {
+          float: right;
+        }
+        .popup-text {
+          overflow-y: scroll;
+          margin: 20px 0;
+        }
+      }
+    }
+    &-close-button {
+      font-size: 40px;
+      transform: translate(-6px, -4px);
+    }
+  }
+}
